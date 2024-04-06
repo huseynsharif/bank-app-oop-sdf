@@ -1,10 +1,11 @@
-package entities;
+package entities.dtos;
 
-public class Card {
+public class LoginRequestDto {
+
     private String cardNumber;
     private int pinCode;
 
-    public Card(String cardNumber, int pinCode) {
+    public LoginRequestDto(String cardNumber, int pinCode) {
         this.cardNumber = cardNumber;
         this.pinCode = pinCode;
     }
