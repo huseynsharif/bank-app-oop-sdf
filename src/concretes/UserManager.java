@@ -1,6 +1,9 @@
 package concretes;
 
+import abstracts.UserDao;
 import abstracts.UserService;
+import entities.Card;
+import entities.User;
 import entities.dtos.LoginRequestDto;
 import entities.dtos.RegisterRequestDto;
 
@@ -9,12 +12,16 @@ import java.util.Scanner;
 // implements keywordu interfacein methodlarını classa implement edir
 public class UserManager implements UserService {
 
-    private Scanner scanner = null;
+    private Scanner scanner;
+    private UserDao userDao;
+
+    public UserManager(Scanner scanner, UserDao userDao) {
+        this.scanner = scanner;
+        this.userDao = userDao;
+    }
 
     @Override
     public void register() {
-        // scanneri bashlat
-        scanner = new Scanner(System.in);
 
         System.out.println("Ad Soyadinizi daxil edin: ");
         String fullNameInput = scanner.nextLine();
@@ -36,16 +43,20 @@ public class UserManager implements UserService {
             pinCodeInput = scanner.nextLine();
         }
 
+        // inputlari user objectine yigiriq
 
+        User user = new User(
+                fullNameInput,
+                new Card(
+                        cardNumberInput,
+                        Integer.parseInt(pinCodeInput)
+                )
+        );
 
-        scanner.close();
+        this.userDao.add(user);
     }
 
     @Override
     public void login() {
-        scanner = new Scanner(System.in);
-
-
-        scanner.close();
     }
 }
