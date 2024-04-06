@@ -65,8 +65,20 @@ public class UserManager implements UserService {
             pinCodeInput = getPinCodeInput();
         }
 
-        if (tryLeft!=0){
-            System.out.println("Login oldunuz, " + user.getFullName());
+        if (tryLeft==0){
+            return;
+        }
+
+        System.out.println("Login oldunuz, " + user.getFullName());
+        System.out.println("Burada bank app-i ile bagli funksionalliqlar yazila biler. Hal hazirda sadece logout ede bilirsiniz. Logout etmek ucun 0 daxil edin.");
+        while (true){
+            int logout = scanner.nextInt();
+            if (logout==0){
+                return;
+            }
+            else {
+                System.out.println("Gecersiz secim.");
+            }
         }
 
     }
