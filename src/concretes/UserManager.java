@@ -4,16 +4,14 @@ import abstracts.UserDao;
 import abstracts.UserService;
 import entities.Card;
 import entities.User;
-import entities.dtos.LoginRequestDto;
-import entities.dtos.RegisterRequestDto;
 
 import java.util.Scanner;
 
 // implements keywordu interfacein methodlarını classa implement edir
 public class UserManager implements UserService {
 
-    private Scanner scanner;
-    private UserDao userDao;
+    private final Scanner scanner;
+    private final UserDao userDao;
 
     public UserManager(Scanner scanner, UserDao userDao) {
         this.scanner = scanner;
