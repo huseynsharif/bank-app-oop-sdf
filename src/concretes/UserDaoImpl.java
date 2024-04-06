@@ -45,13 +45,12 @@ public class UserDaoImpl implements UserDao {
                                     Integer.parseInt(datas[2])
                             )
                     );
+                    break;
                 }
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         return user;
     }
 }

@@ -12,7 +12,7 @@ public class Main {
                 new Scanner(System.in),
                 new UserDaoImpl()
         );
-        userService.register();
+        userService.login();
 
     }
 }
