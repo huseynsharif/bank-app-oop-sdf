@@ -31,15 +31,17 @@ public class UserManager implements UserService {
         String cardNumberInput = scanner.nextLine().replaceAll("\\s", "");
 
         // card numberde herif ola bilmez
-        while (!cardNumberInput.matches("[0-9]+")){
-            System.out.println("Kard nömrəsi yalnız rəqəmlərdən ibarət olmalıdır.");
+        while (!cardNumberInput.matches("[0-9]+") || cardNumberInput.length()!=16){
+            System.out.println("Input yalnishdir. Kard nömrəsi yalnız rəqəmlərdən ve 16 simvoldan ibaret olmalidir.");
+            System.out.println("Zehmet olmasa, kard nomresini yeniden daxil edin: ");
             cardNumberInput = scanner.nextLine().replaceAll("\\s", "");
         }
 
         System.out.println("Pin kodu daxil edin: ");
         String pinCodeInput = scanner.nextLine();
-        while (!pinCodeInput.trim().matches("[0-9]+")){
-            System.out.println("Pin kod yalnız rəqəmlərdən ibarət olmalıdır.");
+        while (!pinCodeInput.trim().matches("[0-9]+") || pinCodeInput.length()!=4){
+            System.out.println("Input yalnishdir. Pin kod yalnız rəqəmlərdən ve 4 simvoldan ibaret olmalidir.");
+            System.out.println("Zehmet olmasa, pin kodu yeniden daxil edin: ");
             pinCodeInput = scanner.nextLine();
         }
 

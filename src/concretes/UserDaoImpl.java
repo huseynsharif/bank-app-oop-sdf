@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao {
             BufferedWriter writer = new BufferedWriter(
                     new FileWriter(Constants.FILE_PATH_USERS, true)
             );
-            String line = String.format("%s&%s&%s", user.getFullName(), user.getCard().getCardNumber(), user.getCard().getPinCode());
+            String line = String.format("%s&%s&%s\n", user.getFullName(), user.getCard().getCardNumber(), user.getCard().getPinCode());
             writer.write(line);
 
             // sonda close edirik
