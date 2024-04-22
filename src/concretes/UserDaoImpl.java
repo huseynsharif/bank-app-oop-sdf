@@ -1,11 +1,12 @@
 package concretes;
 
 import abstracts.UserDao;
-import constants.Constants;
 import entities.Card;
 import entities.User;
 
 import java.io.*;
+
+import static constants.Constants.FILE_PATH_USERS;
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -13,7 +14,7 @@ public class UserDaoImpl implements UserDao {
         try {
             // file i bufferedwriter ile aciriq, daha suretlidir
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(Constants.FILE_PATH_USERS, true)
+                    new FileWriter(FILE_PATH_USERS, true)
             );
             String line = String.format("%s&%s&%s\n", user.getFullName(), user.getCard().getCardNumber(), user.getCard().getPinCode());
             writer.write(line);
@@ -28,9 +29,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findUserByCardNumber(String cardNumber) {
         User user = null;
+
+        File file = new File(FILE_PATH_USERS);
+
+        if (!file.exists()){
+            return null;
+        }
+
         try {
             BufferedReader reader = new BufferedReader(
-                    new FileReader(Constants.FILE_PATH_USERS)
+                    new FileReader(file)
             );
             String line;
             String[] datas;
