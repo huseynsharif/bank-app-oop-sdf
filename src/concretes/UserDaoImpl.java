@@ -28,13 +28,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findUserByCardNumber(String cardNumber) {
-        User user = null;
 
         File file = new File(FILE_PATH_USERS);
-
         if (!file.exists()){
             return null;
         }
+        User user = null;
 
         try {
             BufferedReader reader = new BufferedReader(
